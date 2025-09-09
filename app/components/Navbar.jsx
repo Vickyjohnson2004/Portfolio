@@ -1,11 +1,13 @@
 "use client";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { assets } from "@/assets/assets";
 
 const Navbar = () => {
+  const [isScroll, setisScroll] = useState(false);
+
   const sideMenuRef = useRef();
 
   const openMenu = () => {
@@ -16,6 +18,21 @@ const Navbar = () => {
     sideMenuRef.current.style.transform = "translateX(16rem)";
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setisScroll(true);
+      } else {
+        setisScroll(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <>
       <div className="fixed top-0 left-0 w-11/12 translate-y-[80%] -z-10">
@@ -25,7 +42,13 @@ const Navbar = () => {
           className="w-full"
         />
       </div>
-      <nav className="w-full fixed px-5 lg:px-8 xl:px-[8%] py-4 flex items-center justify-between z-50 bg-white shadow-sm bg-opacity-50 backdrop-blur-md ">
+      <nav
+        className={`w-full fixed px-5 lg:px-8 xl:px-[8%] py-4 flex items-center justify-between z-50 bg-white shadow-sm bg-opacity-50 backdrop-blur-md ${
+          isScroll
+            ? "bg-white bg-opacity-50 backdrop-blur-lg shadow-sm"
+            : "bg-transparent"
+        }`}
+      >
         <Link href="#top">
           <Image
             src={assets.logo}

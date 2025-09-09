@@ -6,7 +6,7 @@ import Link from "next/link";
 const Header = () => {
   return (
     <div
-      className="w-11/12 max-w-4xl mx-auto text-center h-screen pt-40 pb-20 flex flex-col items-center justify-center gap-4"
+      className="w-11/12 max-w-4xl mx-auto text-center h-screen pt-45 pb-20 flex flex-col items-center justify-center gap-4"
       id="top"
     >
       <div>
@@ -20,7 +20,7 @@ const Header = () => {
         Hi i'm Victor Johnson{" "}
         <Image src={assets.hand_icon} alt="hand_icon" className="w-6" />
       </h3>
-      <h1 className="text-3xl sm:text-6xl lg:text-[66px] font-Ovo mb-1">
+      <h1 className="text-3xl sm:text-2xl lg:text-[46px] font-Ovo mb-1">
         Full Stack Developer based in Nigeria
       </h1>
       <p className="max-w-2xl mx-auto mb-3">

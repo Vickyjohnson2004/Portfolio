@@ -5,8 +5,7 @@ module.exports = {
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
@@ -16,8 +15,12 @@ module.exports = {
         darkTheme: "#11001f",
       },
       fontFamily: {
-        Outfit: ["Outfit", "sans-serif"],
-        Ovo: ["Ovo", "serif"],
+        outfit: ["Outfit", "sans-serif"],
+        ovo: ["Ovo", "serif"],
+      },
+      boxShadow: {
+        black: "4px 4px 0 #000",
+        white: "4px 4px 0 #fff",
       },
     },
   },
