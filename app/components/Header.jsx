@@ -1,0 +1,66 @@
+import React from "react";
+import Image from "next/image";
+import { assets } from "@/assets/assets";
+import Link from "next/link";
+
+const Header = () => {
+  return (
+    <div
+      className="w-11/12 max-w-4xl mx-auto text-center h-screen pt-40 pb-20 flex flex-col items-center justify-center gap-4"
+      id="top"
+    >
+      <div>
+        <Image
+          src={assets.profile_img}
+          alt="profile_img"
+          className="w-32 h-32 rounded-full mx-auto border-4 border-white shadow-md shadow-gray-500"
+        />
+      </div>
+      <h3 className="flex items-end gap-2 text-lg md:text-xl ">
+        Hi i'm Victor Johnson{" "}
+        <Image src={assets.hand_icon} alt="hand_icon" className="w-6" />
+      </h3>
+      <h1 className="text-3xl sm:text-6xl lg:text-[66px] font-Ovo mb-1">
+        Full Stack Developer based in Nigeria
+      </h1>
+      <p className="max-w-2xl mx-auto mb-3">
+        I am a Full Stack Web and Mobile App Developer with a passion for
+        creating dynamic and responsive applications from scratch to finish.
+      </p>
+      <p className="max-w-2xl mx-auto mb-2">
+        I have experience working with various technologies and frameworks,
+        including React, Node.js, and React Native. I'm from Nigeria and I'm
+        currently open to new opportunities.
+      </p>
+
+      <div className="flex flex-col sm:flex-row items-center justify-center mt-2 gap-6">
+        <Link
+          className="px-10 py-3 border rounded-full border-white bg-black text-white flex items-center gap-3 ml-4 "
+          href="#contact"
+        >
+          Contact Me{" "}
+          <Image
+            src={assets.right_arrow_white}
+            alt="right_arrow_white"
+            className="w-4"
+          />
+        </Link>
+
+        <Link
+          href="/sample-resume.pdf"
+          download
+          className="px-10 py-3 border rounded-full border-gray-500 flex items-center gap-3 ml-4 "
+        >
+          My resume{" "}
+          <Image
+            src={assets.download_icon}
+            alt="download_icon"
+            className="w-4"
+          />
+        </Link>
+      </div>
+    </div>
+  );
+};
+
+export default Header;
