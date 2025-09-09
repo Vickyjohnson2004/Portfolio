@@ -57,7 +57,11 @@ const Navbar = () => {
           />
         </Link>
 
-        <ul className="hidden md:flex items-center gap-6 lg:gap-8 rounded-full px-12 py-3 text-sm lg:text-base">
+        <ul
+          className={`hidden md:flex items-center gap-6 lg:gap-8 rounded-full px-12 py-3 text-sm lg:text-base ${
+            isScroll ? "bg-opacity-50 shadow-sm bg-white" : "bg-transparent"
+          }`}
+        >
           <li>
             <Link href="#top" className="font-Ovo">
               Home
