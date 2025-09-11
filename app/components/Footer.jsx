@@ -21,7 +21,7 @@ const Footer = () => {
         <p>
           © {new Date().getFullYear()} Victor Johnson💎. All rights reserved.
         </p>
-        <ul className="flex items-center gap-10 justify-center mt-4  sm:mt-0">
+        <ul className="flex items-center gap-10 justify-center mt-4 sm:mt-0">
           <li>
             <Link target="_blank" href="https://github.com/Vickyjohnson2004">
               Github

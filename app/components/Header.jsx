@@ -35,7 +35,7 @@ const Header = () => {
 
       <div className="flex flex-col sm:flex-row items-center justify-center mt-2 gap-6">
         <Link
-          className="px-10 py-3 border rounded-full border-white bg-black text-white flex items-center gap-3 ml-4 "
+          className="px-10 py-3 border rounded-full border-white bg-black text-white flex items-center gap-3 ml-4 dark:bg-transparent dark:border-gray-500"
           href="#contact"
         >
           Contact Me{" "}
@@ -49,7 +49,7 @@ const Header = () => {
         <Link
           href="/sample-resume.pdf"
           download
-          className="px-10 py-3 border rounded-full border-gray-500 flex items-center gap-3 ml-4 "
+          className="px-10 py-3 border rounded-full border-gray-500 flex bg-white items-center gap-3 ml-4 dark:text-black dark:bg-white"
         >
           My resume{" "}
           <Image
