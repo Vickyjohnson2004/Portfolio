@@ -1,15 +1,46 @@
 import React from "react";
 import Image from "next/image";
 import { assets, infoList, toolsData } from "@/assets/assets";
+import { motion } from "motion/react";
 
 const About = ({ isDarkMode }) => {
   return (
-    <div className="w-full px-[12%] py-16 scroll-mt-20" id="about">
-      <h4 className="text-center mb-2 text-lg font-ovo">Introduction</h4>
-      <h2 className="text-center text-3xl md:text-4xl font-ovo">About Me</h2>
+    <motion.div
+      className="w-full px-[12%] py-20 scroll-mt-20"
+      id="about"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 1 }}
+    >
+      <motion.h4
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.3 }}
+        className="text-center mb-2 text-lg font-ovo"
+      >
+        Introduction
+      </motion.h4>
+      <motion.h2
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.5 }}
+        className="text-center text-3xl md:text-4xl font-ovo"
+      >
+        About Me
+      </motion.h2>
 
-      <div className="flex w-full flex-col lg:flex-row items-center gap-10 my-20">
-        <div className="w-64 sm:w-80 rounded-3xl max-w-none shadow-lg">
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.8, delay: 0.5 }}
+        className="flex w-full flex-col lg:flex-row items-center gap-10 my-4"
+      >
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8, y: -20 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.6 }}
+          className="w-64 sm:w-80 rounded-3xl max-w-none shadow-lg"
+        >
           <Image
             src={assets.user_image}
             alt="Portrait of [Your Name]"
@@ -18,9 +49,14 @@ const About = ({ isDarkMode }) => {
             height={400}
             priority
           />
-        </div>
-        <div className="flex-1">
-          <p className="mb-8 max-w-2xl text-justify font-ovo">
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.8 }}
+          className="flex-1"
+        >
+          <p className="mb-4 max-w-2xl text-justify font-ovo">
             I am a passionate developer with a love for creating dynamic and
             user-friendly web applications. My journey in tech started with a
             curiosity for how things work, and it has evolved into a
@@ -31,11 +67,18 @@ const About = ({ isDarkMode }) => {
             different parts of the world, helping them bring their ideas to life
             through code.
           </p>
-          <ul className="grid grid-cols-1 sm:grid-cols-3 gap-12 max-w-2xl">
+
+          <motion.ul
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 1 }}
+            className="grid grid-cols-1 sm:grid-cols-3 gap-12 max-w-2xl"
+          >
             {infoList.map(({ icon, iconDark, title, description }, index) => (
-              <li
+              <motion.li
+                whileHover={{ scale: 1.05 }}
                 key={index}
-                className="border border-gray-400 rounded-xl p-6 cursor-pointer hover:scale-105 transition-transform flex flex-col gap-4 items-center text-center hover:bg-lightHover hover:-translate-y-1 duration-500 hover:shadow-black hover:shadow-md dark:hover:bg-darkHover dark:border-white dark:hover:shadow-white dark:hover:bg-darkHover/50"
+                className="border border-gray-400 rounded-xl p-4 cursor-pointer hover:scale-105 transition-transform flex flex-col gap-4 items-center text-center hover:bg-lightHover hover:-translate-y-1 duration-500 hover:shadow-black hover:shadow-md dark:hover:bg-darkHover dark:border-white dark:hover:shadow-white dark:hover:bg-darkHover/50"
               >
                 <Image
                   src={isDarkMode ? iconDark : icon}
@@ -48,25 +91,36 @@ const About = ({ isDarkMode }) => {
                 <p className="text-gray-600 text-sm dark:text-white/80">
                   {description}
                 </p>
-              </li>
+              </motion.li>
             ))}
-          </ul>
-          <h4 className="my-6 text-gray-700 font-Ovo dark:text-white/80">
+          </motion.ul>
+          <motion.h4
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 1.3 }}
+            className="my-2 text-gray-700 font-Ovo dark:text-white/80"
+          >
             Tools I use
-          </h4>
-          <ul className="flex items-center gap-3 sm:gap-7 flex-wrap">
+          </motion.h4>
+          <motion.ul
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 1.5 }}
+            className="flex items-center gap-3 sm:gap-7 flex-wrap"
+          >
             {toolsData.map((tool, index) => (
-              <li
+              <motion.li
+                whileHover={{ scale: 1.1 }}
                 key={index}
                 className="flex items-center justify-center w-12 sm:w-14 cursor-pointer hover:scale-118 aspect-square border border-gray-400 rounded-lg transition-transform hover:-translate-y-1 duration-500"
               >
                 <Image src={tool} alt={tool} className="w-5 sm:w-7 mt-3" />
-              </li>
+              </motion.li>
             ))}
-          </ul>
-        </div>
-      </div>
-    </div>
+          </motion.ul>
+        </motion.div>
+      </motion.div>
+    </motion.div>
   );
 };
 
