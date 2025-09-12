@@ -85,7 +85,7 @@ const Contact = () => {
             name="name"
             placeholder="Your Name"
             required
-            className="w-full md:w-1/2 p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 mb-4 dark:bg-darkHover/30 dark:border-white/90 dark:focus:ring-1 dark:focus:ring-white"
+            className="w-full md:w-1/2 p-3 rounded-lg border border-gray-400 focus:outline-none focus:ring-2 mb-4 dark:bg-darkHover/30 dark:border-white/90 dark:focus:ring-1 dark:focus:ring-white"
           />
           <motion.input
             initial={{ x: 50, opacity: 0 }}
@@ -95,7 +95,7 @@ const Contact = () => {
             name="email"
             placeholder="Your Email"
             required
-            className="w-full md:w-1/2 p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 mb-4 dark:bg-darkHover/30 dark:border-white/90 dark:focus:ring-1 dark:focus:ring-white"
+            className="w-full md:w-1/2 p-3 rounded-lg border border-gray-400 focus:outline-none focus:ring-2 mb-4 dark:bg-darkHover/30 dark:border-white/90 dark:focus:ring-1 dark:focus:ring-white"
           />
         </div>
 
@@ -108,7 +108,7 @@ const Contact = () => {
           id="message"
           placeholder="Your Message"
           required
-          className="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 mb-4 dark:bg-darkHover/30 dark:border-white/90 dark:focus:ring-1 dark:focus:ring-white"
+          className="w-full p-3 rounded-lg border border-gray-400 focus:outline-none focus:ring-2 mb-4 dark:bg-darkHover/30 dark:border-white/90 dark:focus:ring-1 dark:focus:ring-white"
         ></motion.textarea>
 
         <motion.button

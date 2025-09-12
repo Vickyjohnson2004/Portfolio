@@ -41,8 +41,12 @@ import TypeScript from "./TypeScript.png";
 import React from "./React.jpeg";
 import Node from "./Node.png";
 import tailwindcss from "./tailwindcss.png";
+import GitHub from "./GitHub.png";
+import JavaScript from "./Javascript.jpeg";
 
 export const assets = {
+  JavaScript,
+  GitHub,
   Next,
   TypeScript,
   React,
@@ -163,11 +167,12 @@ export const infoList = [
 
 export const toolsData = [
   assets.vscode,
-  assets.firebase,
+  // assets.firebase,
   assets.mongodb,
-  assets.figma,
+  // assets.figma,
   assets.git,
-
+  assets.JavaScript,
+  assets.GitHub,
   assets.Next,
   assets.TypeScript,
   assets.React,
