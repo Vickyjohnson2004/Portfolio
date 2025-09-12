@@ -114,7 +114,7 @@ const About = ({ isDarkMode }) => {
                 key={index}
                 className="flex items-center justify-center w-12 sm:w-14 cursor-pointer hover:scale-118 aspect-square border border-gray-400 rounded-lg transition-transform hover:-translate-y-1 duration-500"
               >
-                <Image src={tool} alt={tool} className="w-5 sm:w-7 mt-3" />
+                <Image src={tool} alt={tool} className="w-10 sm:w-8 mt-1" />
               </motion.li>
             ))}
           </motion.ul>

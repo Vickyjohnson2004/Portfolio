@@ -2,6 +2,14 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { assets, workData } from "@/assets/assets";
+import {
+  FaFacebook,
+  FaTwitter,
+  FaInstagram,
+  FaLinkedin,
+  FaGithub,
+  FaThreads,
+} from "react-icons/fa";
 
 const Footer = ({ isDarkMode }) => {
   return (
@@ -28,27 +36,36 @@ const Footer = ({ isDarkMode }) => {
         <ul className="flex items-center gap-10 justify-center mt-4 sm:mt-0">
           <li>
             <Link target="_blank" href="https://github.com/Vickyjohnson2004">
-              Github
+              <FaGithub />
             </Link>
           </li>
           <li>
             <Link target="_blank" href="https://github.com/Vickyjohnson2004">
-              Facebook
+              <FaFacebook />
             </Link>
           </li>
           <li>
             <Link target="_blank" href="https://github.com/Vickyjohnson2004">
-              X
+              <FaTwitter />
             </Link>
           </li>
           <li>
             <Link target="_blank" href="https://github.com/Vickyjohnson2004">
-              Instagram
+              <FaInstagram />
             </Link>
           </li>
           <li>
             <Link target="_blank" href="https://github.com/Vickyjohnson2004">
-              Linkedin
+              <FaLinkedin />
+            </Link>
+          </li>
+
+          <li>
+            <Link
+              target="_blank"
+              href="https://www.threads.com/@vic_tor_johnson?xmt=AQF07G2QgH33yFnlaNQ3veCws_6_IdyWWXt9ISwtLCFk91s"
+            >
+              <FaThreads />
             </Link>
           </li>
         </ul>
