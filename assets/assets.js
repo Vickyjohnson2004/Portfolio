@@ -161,7 +161,8 @@ export const infoList = [
     icon: assets.project_icon,
     iconDark: assets.project_icon_dark,
     title: "Projects",
-    description: "Built more than 6 projects",
+    description:
+      "Built more projects and has done more collaborations with developers around the globe",
   },
 ];
 
