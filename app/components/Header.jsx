@@ -60,7 +60,7 @@ const Header = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 1 }}
-          className="px-10 py-3 border rounded-full border-white bg-black text-white flex items-center gap-3 ml-4 dark:bg-transparent dark:border-gray-500"
+          className="px-10 py-3 border rounded-full  border-gray-500  bg-black text-white flex items-center gap-3 ml-4 dark:bg-transparent dark:border-gray-500"
           href="#contact"
         >
           Contact Me{" "}
