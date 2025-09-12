@@ -8,8 +8,8 @@ import {
   FaInstagram,
   FaLinkedin,
   FaGithub,
-  FaThreads,
 } from "react-icons/fa";
+import { FaThreads } from "react-icons/fa6";
 
 const Footer = ({ isDarkMode }) => {
   return (
@@ -40,22 +40,34 @@ const Footer = ({ isDarkMode }) => {
             </Link>
           </li>
           <li>
-            <Link target="_blank" href="https://github.com/Vickyjohnson2004">
+            <Link
+              target="_blank"
+              href="https://www.facebook.com/share/1BudUMto1w/"
+            >
               <FaFacebook />
             </Link>
           </li>
           <li>
-            <Link target="_blank" href="https://github.com/Vickyjohnson2004">
+            <Link
+              target="_blank"
+              href="https://x.com/victorjohnsonn?t=N7mrW9bizMMdR5rzVVwyNw&s=08"
+            >
               <FaTwitter />
             </Link>
           </li>
           <li>
-            <Link target="_blank" href="https://github.com/Vickyjohnson2004">
+            <Link
+              target="_blank"
+              href="https://www.instagram.com/vic_tor_johnson/"
+            >
               <FaInstagram />
             </Link>
           </li>
           <li>
-            <Link target="_blank" href="https://github.com/Vickyjohnson2004">
+            <Link
+              target="_blank"
+              href="https://l.facebook.com/l.php?u=https%3A%2F%2Flinkedin.com%2Fin%2Fvictor-johnson-563353257%3Ffbclid%3DIwZXh0bgNhZW0CMTAAYnJpZBEwZWJvek5pc1JjeXZaYVRpVgEetLrkQwjNucBN-hs7HzZrgHwfi5Lzc6cLzOuLn6wXhIxxrePxi_SdFmyyZ5M_aem_qBM25t0Mq8FcUhTP_sPTag&h=AT0_ExTMHeh4aFvmGYCCIw534SPLFOElOK4QQP1hcj7SBvtYptvfbhf_B9dyTZBDkp89GgUjgAWiB3SgMKu6orUSN00c3YW0JXgxnyktZj3zfJSfXIW90sAlwJGgqV3d1aUVUoaARysKk2gheef4"
+            >
               <FaLinkedin />
             </Link>
           </li>

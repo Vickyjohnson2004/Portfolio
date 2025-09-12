@@ -42,7 +42,8 @@ const About = ({ isDarkMode }) => {
           className="w-64 sm:w-80 rounded-3xl max-w-none shadow-lg"
         >
           <Image
-            src={assets.user_image}
+            src={assets.profile_img}
+            // .user_image
             alt="Portrait of [Your Name]"
             className="w-full rounded-3xl"
             width={320}
