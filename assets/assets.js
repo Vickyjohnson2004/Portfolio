@@ -43,10 +43,12 @@ import Node from "./Node.png";
 import tailwindcss from "./tailwindcss.png";
 import GitHub from "./GitHub.png";
 import JavaScript from "./Javascript.jpeg";
+import reactNative from "./reactNativeLogo.png";
 
 export const assets = {
   JavaScript,
   GitHub,
+  reactNative,
   Next,
   TypeScript,
   React,
@@ -178,4 +180,5 @@ export const toolsData = [
   assets.React,
   assets.Node,
   assets.tailwindcss,
+  assets.reactNative,
 ];
