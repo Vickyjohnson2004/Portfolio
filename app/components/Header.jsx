@@ -7,7 +7,7 @@ import { motion } from "motion/react";
 const Header = () => {
   return (
     <div
-      className="w-11/12 max-w-4xl mx-auto text-center h-screen pt-45 pb-20 flex flex-col items-center justify-center gap-4"
+      className="w-11/12  max-w-4xl mx-auto text-center h-screen pt-45 pb-20 flex flex-col items-center justify-center gap-4"
       id="top"
     >
       <motion.div
@@ -18,7 +18,7 @@ const Header = () => {
         <Image
           src={assets.profile_img}
           alt="profile_img"
-          className="w-32 h-32 rounded-full mx-auto border-4 border-white shadow-md shadow-gray-500"
+          className="w-32 h-32 sm:pt-10 rounded-full mx-auto border-4 border-white shadow-md shadow-gray-500"
         />
       </motion.div>
       <motion.h3
@@ -75,7 +75,7 @@ const Header = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 1 }}
-          href="/sample-resume.pdf"
+          href="/Victor_Johnson_Resume.pdf"
           download
           className="px-10 py-3 border rounded-full border-gray-500 flex bg-white items-center gap-3 ml-4 dark:text-black dark:bg-white"
         >

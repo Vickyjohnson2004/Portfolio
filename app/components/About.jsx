@@ -113,9 +113,15 @@ const About = ({ isDarkMode }) => {
               <motion.li
                 whileHover={{ scale: 1.1 }}
                 key={index}
-                className="flex items-center justify-center w-12 sm:w-14 cursor-pointer hover:scale-118 aspect-square border border-gray-400 rounded-lg transition-transform hover:-translate-y-1 duration-500"
+                className="flex items-center justify-center w-16 sm:w-20 cursor-pointer hover:scale-118 aspect-square border border-gray-400 rounded-lg transition-transform hover:-translate-y-1 duration-500"
               >
-                <Image src={tool} alt={tool} className="w-10 sm:w-8 mt-1" />
+                <Image
+                  src={tool}
+                  alt="tool icon"
+                  width={58}
+                  height={58}
+                  className="mt-1 object-cover"
+                />
               </motion.li>
             ))}
           </motion.ul>
