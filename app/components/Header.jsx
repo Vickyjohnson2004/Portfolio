@@ -75,7 +75,7 @@ const Header = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 1 }}
-          href="/Victor_Johnson_Resume.pdf"
+          href="/Victor_Johnson_Professional_Resume.pdf"
           download
           className="px-10 py-3 border rounded-full border-gray-500 flex bg-white items-center gap-3 ml-4 dark:text-black dark:bg-white"
         >
