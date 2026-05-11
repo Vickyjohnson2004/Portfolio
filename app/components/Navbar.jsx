@@ -1,33 +1,37 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
-import React from "react";
+
+import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { assets } from "@/assets/assets";
 
 const Navbar = ({ isDarkMode, setIsDarkMode }) => {
-  const [isScroll, setisScroll] = useState(false);
+  const [isScroll, setIsScroll] = useState(false);
 
-  const sideMenuRef = useRef();
+  const sideMenuRef = useRef(null);
 
+  // OPEN MOBILE MENU
   const openMenu = () => {
-    sideMenuRef.current.style.transform = "translateX(-16rem)";
+    if (sideMenuRef.current) {
+      sideMenuRef.current.style.transform = "translateX(-16rem)";
+    }
   };
 
+  // CLOSE MOBILE MENU
   const closeMenu = () => {
-    sideMenuRef.current.style.transform = "translateX(16rem)";
+    if (sideMenuRef.current) {
+      sideMenuRef.current.style.transform = "translateX(16rem)";
+    }
   };
 
+  // SCROLL EFFECT
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setisScroll(true);
-      } else {
-        setisScroll(false);
-      }
+      setIsScroll(window.scrollY > 50);
     };
 
     window.addEventListener("scroll", handleScroll);
+
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
@@ -35,129 +39,207 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
 
   return (
     <>
-      <div className="fixed top-0 left-0 w-11/12 translate-y-[80%] -z-10 dark:hidden">
+      {/* BACKGROUND */}
+      <div className="fixed top-0 left-0 w-full -z-10 opacity-40 dark:hidden">
         <Image
           src={assets.header_bg_color}
-          alt="background"
-          className="w-full"
+          alt="Header Background"
+          priority
+          width={1920}
+          height={1080}
+          className="w-full h-auto object-cover"
         />
       </div>
+
+      {/* NAVBAR */}
       <nav
-        className={`w-full fixed px-5 lg:px-8 xl:px-[8%] py-4 flex items-center justify-between z-50 bg-white shadow-sm bg-opacity-50 backdrop-blur-md ${
-          isScroll
-            ? "bg-white bg-opacity-50 backdrop-blur-lg shadow-sm dark:bg-darkTheme dark:shadow-white/20"
-            : "bg-transparent"
-        }`}
+        className={`
+          fixed top-0 left-0 w-full z-50
+          px-5 lg:px-8 xl:px-[8%]
+          py-4
+          flex items-center justify-between
+          transition-all duration-300
+          ${
+            isScroll
+              ? "bg-white/80 backdrop-blur-lg shadow-md dark:bg-darkTheme/80"
+              : "bg-transparent"
+          }
+        `}
       >
+        {/* LOGO */}
         <Link href="#top">
           <Image
             src={isDarkMode ? assets.logo_dark : assets.logo}
-            alt="Logo"
-            className="w-28 h-10 cursor-pointer mr-14 rounded-full"
+            alt="Victor Johnson Logo"
+            priority
+            width={160}
+            height={50}
+            className="w-28 h-auto object-contain cursor-pointer"
           />
         </Link>
 
+        {/* DESKTOP MENU */}
         <ul
-          className={`hidden md:flex items-center gap-6 lg:gap-8 rounded-full px-12 py-3 text-sm lg:text-base ${
-            isScroll
-              ? "bg-opacity-50 shadow-sm bg-white dark:border dark:border-white/50 dark:bg-transparent"
-              : "bg-transparent"
-          }`}
+          className={`
+            hidden md:flex items-center
+            gap-8
+            px-10 py-3
+            rounded-full
+            text-sm lg:text-base
+            transition-all duration-300
+            ${
+              isScroll
+                ? "bg-white/70 shadow-sm dark:bg-darkHover/40 border dark:border-white/10"
+                : "bg-transparent"
+            }
+          `}
         >
-          <li>
-            <Link href="#top" className="font-Ovo">
-              Home
-            </Link>
-          </li>
-          <li>
-            <Link href="#about" className="font-Ovo">
-              About Me
-            </Link>
-          </li>
-          <li>
-            <Link href="#services" className="font-Ovo">
-              Services
-            </Link>
-          </li>
-          <li>
-            <Link href="#work" className="font-Ovo">
-              My Work
-            </Link>
-          </li>
-          <li>
-            <Link href="#contact" className="font-Ovo">
-              Contact Me
-            </Link>
-          </li>
+          {[
+            ["Home", "#top"],
+            ["About", "#about"],
+            ["Services", "#services"],
+            ["Projects", "#work"],
+            ["Contact", "#contact"],
+          ].map(([title, link]) => (
+            <li key={title}>
+              <Link
+                href={link}
+                className="
+                  relative
+                  text-gray-700 dark:text-white
+                  hover:text-black dark:hover:text-gray-300
+                  transition-colors duration-300
+                  after:absolute
+                  after:left-0
+                  after:-bottom-1
+                  after:h-[2px]
+                  after:w-0
+                  after:bg-black
+                  dark:after:bg-white
+                  after:transition-all
+                  after:duration-300
+                  hover:after:w-full
+                "
+              >
+                {title}
+              </Link>
+            </li>
+          ))}
         </ul>
 
+        {/* RIGHT SECTION */}
         <div className="flex items-center gap-4">
-          <button onClick={() => setIsDarkMode(!isDarkMode)}>
+          {/* DARK MODE BUTTON */}
+          <button
+            onClick={() => setIsDarkMode(!isDarkMode)}
+            className="
+              p-2 rounded-full
+              hover:bg-gray-100
+              dark:hover:bg-darkHover
+              transition
+            "
+          >
             <Image
               src={isDarkMode ? assets.sun_icon : assets.moon_icon}
-              alt="moon_icon"
-              className="w-6"
+              alt="Theme Toggle"
+              width={24}
+              height={24}
+              className="w-6 h-6 object-contain"
             />
           </button>
+
+          {/* CONTACT BUTTON */}
           <Link
             href="#contact"
-            className="hidden lg:flex items-center font-Ovo gap-3 px-10 py-2 border border-gray-500 rounded-full ml-4 text-sm lg:text-base dark:border-white/50 hover:shadow-sm hover:shadow-gray-400/30 hover:dark:shadow-white/20 transition"
+            className="
+              hidden lg:flex items-center gap-3
+              px-7 py-3
+              rounded-full
+              border border-gray-300 dark:border-white/20
+              bg-white/80 dark:bg-darkHover/30
+              backdrop-blur-md
+              text-gray-800 dark:text-white
+              hover:shadow-lg
+              hover:scale-105
+              transition-all duration-300
+            "
           >
-            Contact{" "}
+            Contact
             <Image
               src={isDarkMode ? assets.arrow_icon_dark : assets.arrow_icon}
-              alt="arrow_Icon"
-              className="w-3"
+              alt="Arrow Icon"
+              width={12}
+              height={12}
+              className="w-3 h-3 object-contain"
             />
           </Link>
 
-          <button onClick={openMenu} className="block md:hidden ml-3">
+          {/* MOBILE MENU BUTTON */}
+          <button onClick={openMenu} className="block md:hidden p-2">
             <Image
               src={isDarkMode ? assets.menu_white : assets.menu_black}
-              alt="menu_black"
-              className="w-6"
+              alt="Menu Icon"
+              width={24}
+              height={24}
+              className="w-6 h-6 object-contain"
             />
           </button>
         </div>
 
-        {/* Mobile Menu */}
+        {/* MOBILE MENU */}
         <ul
           ref={sideMenuRef}
-          className="flex md:hidden flex-col gap-4 py-20 px-10 fixed -right-64 top-0 bottom-0 w-64 z-50 h-screen bg-rose-50 transition-all duration-300 ease-in-out dark:bg-darkHover dark:text-white shadow-lg"
+          className="
+            md:hidden
+            fixed
+            top-0
+            right-[-16rem]
+            bottom-0
+            w-64
+            h-screen
+            z-50
+            flex flex-col
+            gap-6
+            px-10
+            py-24
+            bg-white dark:bg-darkTheme
+            shadow-2xl
+            transition-transform duration-300 ease-in-out
+          "
         >
-          <div className="absolute top-6 right-6" onClick={closeMenu}>
+          {/* CLOSE BUTTON */}
+          <button onClick={closeMenu} className="absolute top-6 right-6">
             <Image
               src={isDarkMode ? assets.close_white : assets.close_black}
-              alt="close_black"
-              className="w-5 cursor-pointer"
+              alt="Close Menu"
+              width={20}
+              height={20}
+              className="w-5 h-5 object-contain"
             />
-          </div>
+          </button>
 
-          <li>
-            <Link href="#top" onClick={closeMenu} className="font-Ovo">
-              Home
-            </Link>
-          </li>
-          <li>
-            <Link href="#about" onClick={closeMenu} className="font-Ovo">
-              About Me
-            </Link>
-          </li>
-          <li>
-            <Link href="#services" onClick={closeMenu} className="font-Ovo">
-              Services
-            </Link>
-          </li>
-          <li>
-            <Link href="#work" onClick={closeMenu} className="font-Ovo">
-              My Work
-            </Link>
-          </li>
-          <li>
-            <Link href="#contact" onClick={closeMenu} className="font-Ovo">
-              Contact Me
-            </Link>
-          </li>
+          {[
+            ["Home", "#top"],
+            ["About", "#about"],
+            ["Services", "#services"],
+            ["Projects", "#work"],
+            ["Contact", "#contact"],
+          ].map(([title, link]) => (
+            <li key={title}>
+              <Link
+                href={link}
+                onClick={closeMenu}
+                className="
+                  text-lg
+                  text-gray-700 dark:text-white
+                  hover:text-black dark:hover:text-gray-300
+                  transition-colors duration-300
+                "
+              >
+                {title}
+              </Link>
+            </li>
+          ))}
         </ul>
       </nav>
     </>

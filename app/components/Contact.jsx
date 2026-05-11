@@ -1,132 +1,137 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import Image from "next/image";
 import { assets } from "@/assets/assets";
-import { useState } from "react";
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 
 const Contact = () => {
   const [result, setResult] = useState("");
 
   const onSubmit = async (event) => {
     event.preventDefault();
-    setResult("Sending....");
+    setResult("Sending...");
+
     const formData = new FormData(event.target);
 
     formData.append("access_key", "0ce41698-e5ec-468f-85f0-a505902bcaa5");
 
-    const response = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      body: formData,
-    });
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      });
 
-    const data = await response.json();
+      const data = await response.json();
 
-    if (data.success) {
-      setResult("Form Submitted Successfully");
-      event.target.reset();
-    } else {
-      console.log("Error", data);
-      setResult(data.message);
+      if (data.success) {
+        setResult("Message sent successfully 🚀");
+        event.target.reset();
+      } else {
+        console.log("Error:", data);
+        setResult(data.message || "Something went wrong");
+      }
+    } catch (error) {
+      console.log(error);
+      setResult("Network error. Try again.");
     }
   };
+
   return (
-    <motion.div
+    <motion.section
+      id="contact"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
-      transition={{ duration: 1 }}
-      className="w-full px-[8%] py-16 dark:bg-none scroll-mt-20 bg-[length:90%_auto] bg-no-repeat bg-center  "
-      // bg-[url('/footer-bg-color.png')]
-      id="contact"
+      transition={{ duration: 0.8 }}
+      className="w-full px-[8%] py-20 scroll-mt-20"
     >
+      {/* TITLE */}
       <motion.h4
         initial={{ y: -20, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.3 }}
-        className="text-center mb-2 text-lg font-ovo"
+        transition={{ duration: 0.5 }}
+        className="text-center text-lg font-medium"
       >
         Connect with Me
       </motion.h4>
+
       <motion.h2
         initial={{ y: -20, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.5 }}
-        className="text-center text-3xl md:text-4xl font-ovo"
+        transition={{ duration: 0.6, delay: 0.1 }}
+        className="text-center text-3xl md:text-4xl font-bold mt-2"
       >
         Get in Touch
       </motion.h2>
 
+      {/* DESCRIPTION */}
       <motion.p
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.7 }}
-        className="text-center max-w-2xl mx-auto mt-4 mb-11 font-ovo"
+        transition={{ duration: 0.6, delay: 0.2 }}
+        className="text-center max-w-2xl mx-auto mt-4 mb-10 text-gray-600 dark:text-gray-300"
       >
-        I'm currently open to new opportunities and collaborations. Whether
-        you're looking for a dedicated developer to bring your project to life
-        or just want to say hello, feel free to reach out. send me a message and
-        let's discuss how we can work together to create something amazing. i
-        would love to hear from you!
+        I'm open to opportunities, collaborations, and freelance work. Send a
+        message and let's build something great together.
       </motion.p>
 
+      {/* FORM */}
       <motion.form
+        onSubmit={onSubmit}
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.9 }}
-        onSubmit={onSubmit}
-        action="contact"
-        className="flex flex-col items-center max-w-3xl mx-auto"
+        transition={{ duration: 0.7, delay: 0.3 }}
+        className="max-w-3xl mx-auto flex flex-col gap-4"
       >
-        <div className="w-full flex flex-col md:flex-row gap-4 mb-4">
-          <motion.input
-            initial={{ x: -50, opacity: 0 }}
-            whileInView={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 1.1 }}
+        {/* NAME + EMAIL */}
+        <div className="flex flex-col md:flex-row gap-4">
+          <input
             type="text"
             name="name"
             placeholder="Your Name"
             required
-            className="w-full md:w-1/2 p-3 rounded-lg border border-gray-400 focus:outline-none focus:ring-2 mb-4 dark:bg-darkHover/30 dark:border-white/90 dark:focus:ring-1 dark:focus:ring-white"
+            className="w-full p-3 rounded-lg border border-gray-300 dark:border-white/20 dark:bg-darkHover/30 outline-none focus:ring-2 focus:ring-black dark:focus:ring-white"
           />
-          <motion.input
-            initial={{ x: 50, opacity: 0 }}
-            whileInView={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 1.2 }}
+
+          <input
             type="email"
             name="email"
             placeholder="Your Email"
             required
-            className="w-full md:w-1/2 p-3 rounded-lg border border-gray-400 focus:outline-none focus:ring-2 mb-4 dark:bg-darkHover/30 dark:border-white/90 dark:focus:ring-1 dark:focus:ring-white"
+            className="w-full p-3 rounded-lg border border-gray-300 dark:border-white/20 dark:bg-darkHover/30 outline-none focus:ring-2 focus:ring-black dark:focus:ring-white"
           />
         </div>
 
-        <motion.textarea
-          initial={{ y: 100, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6, delay: 1.3 }}
+        {/* MESSAGE */}
+        <textarea
           name="message"
-          rows={6}
-          id="message"
+          rows="6"
           placeholder="Your Message"
           required
-          className="w-full p-3 rounded-lg border border-gray-400 focus:outline-none focus:ring-2 mb-4 dark:bg-darkHover/30 dark:border-white/90 dark:focus:ring-1 dark:focus:ring-white"
-        ></motion.textarea>
+          className="w-full p-3 rounded-lg border border-gray-300 dark:border-white/20 dark:bg-darkHover/30 outline-none focus:ring-2 focus:ring-black dark:focus:ring-white"
+        />
 
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          transition={{ duration: 0.3 }}
-          className="flex items-center justify-center bg-black text-white py-2 px-4 rounded-lg transition-all duration-500 hover:bg-black/50 shadow-md shadow-gray-400 dark:bg-transparent dark:border-[0.5px] dark:border-white/90 dark:text-white dark:hover:bg-darkHover/30 dark:shadow-white/50"
+        {/* BUTTON */}
+        <button
+          type="submit"
+          className="flex items-center justify-center gap-2 bg-black text-white py-3 px-6 rounded-lg hover:bg-gray-800 transition-all dark:bg-white dark:text-black"
         >
-          Send Message{" "}
+          Send Message
           <Image
             src={assets.right_arrow_white}
-            alt="right_arrow_white"
-            className="ml-2 w-5"
+            alt="arrow"
+            width={16}
+            height={16}
+            className="w-4 h-4"
           />
-        </motion.button>
+        </button>
 
-        <p className="text-center mt-4">{result}</p>
+        {/* RESULT */}
+        <p className="text-center mt-3 text-sm text-gray-600 dark:text-gray-300">
+          {result}
+        </p>
       </motion.form>
-    </motion.div>
+    </motion.section>
   );
 };
 

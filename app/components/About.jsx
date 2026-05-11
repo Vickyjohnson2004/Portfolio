@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
 import { assets, infoList, toolsData } from "@/assets/assets";
@@ -5,129 +7,143 @@ import { motion } from "motion/react";
 
 const About = ({ isDarkMode }) => {
   return (
-    <motion.div
-      className="w-full px-[12%] py-20 scroll-mt-20"
+    <motion.section
       id="about"
+      className="w-full px-[12%] py-20 scroll-mt-20"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
-      transition={{ duration: 1 }}
+      transition={{ duration: 0.8 }}
+      viewport={{ once: true }}
     >
+      {/* HEADER */}
       <motion.h4
-        initial={{ opacity: 0, y: -20 }}
+        initial={{ opacity: 0, y: -10 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.3 }}
-        className="text-center mb-2 text-lg font-ovo"
+        transition={{ duration: 0.4 }}
+        viewport={{ once: true }}
+        className="text-center mb-2 text-lg font-ovo text-gray-600 dark:text-white/80"
       >
         Introduction
       </motion.h4>
+
       <motion.h2
-        initial={{ opacity: 0, y: -20 }}
+        initial={{ opacity: 0, y: -10 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.5 }}
-        className="text-center text-3xl md:text-4xl font-ovo"
+        transition={{ duration: 0.5, delay: 0.1 }}
+        viewport={{ once: true }}
+        className="text-center text-3xl md:text-4xl font-ovo text-gray-900 dark:text-white"
       >
         About Me
       </motion.h2>
 
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.8, delay: 0.5 }}
-        className="flex w-full flex-col lg:flex-row items-center gap-10 my-4"
-      >
+      {/* MAIN CONTENT */}
+      <div className="flex w-full flex-col lg:flex-row items-center gap-10 my-10">
+        {/* IMAGE */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.8, y: -20 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6 }}
-          className="w-64 sm:w-80 rounded-3xl max-w-none shadow-lg"
+          viewport={{ once: true }}
+          className="w-64 sm:w-80 rounded-3xl overflow-hidden shadow-lg"
         >
           <Image
             src={assets.profile_img}
-            // .user_image
-            alt="Portrait of [Your Name]"
-            className="w-full rounded-3xl"
-            width={320}
-            height={400}
+            alt="Victor Johnson"
+            width={400}
+            height={500}
             priority
+            className="w-full h-auto object-cover rounded-3xl"
           />
         </motion.div>
+
+        {/* TEXT CONTENT */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          viewport={{ once: true }}
           className="flex-1"
         >
-          <p className="mb-4 max-w-2xl text-justify font-ovo">
+          <p className="mb-6 max-w-2xl text-justify text-gray-600 dark:text-white/80 font-ovo leading-7">
             I am a passionate developer with a love for creating dynamic and
-            user-friendly web applications. My journey in tech started with a
-            curiosity for how things work, and it has evolved into a
-            full-fledged career in software development, specializing in both
-            front-end and back-end technologies. I have worked on various
-            projects ranging from small business websites to complex web
-            applications, I have had the privilege of working with clients from
-            different parts of the world, helping them bring their ideas to life
-            through code.
+            user-friendly web applications. My journey in tech started with
+            curiosity and evolved into full-stack development expertise. I build
+            scalable applications using modern technologies and focus on clean
+            UI, performance, and user experience.
           </p>
 
+          {/* INFO CARDS */}
           <motion.ul
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 1 }}
-            className="grid grid-cols-1 sm:grid-cols-3 gap-12 max-w-2xl"
+            transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ once: true }}
+            className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-2xl"
           >
             {infoList.map(({ icon, iconDark, title, description }, index) => (
               <motion.li
-                whileHover={{ scale: 1.05 }}
                 key={index}
-                className="border border-gray-400 rounded-xl p-4 cursor-pointer hover:scale-105 transition-transform flex flex-col gap-4 items-center text-center hover:bg-lightHover hover:-translate-y-1 duration-500 hover:shadow-black hover:shadow-md dark:hover:bg-darkHover dark:border-white dark:hover:shadow-white dark:hover:bg-darkHover/50"
+                whileHover={{ scale: 1.03 }}
+                className="
+                  border border-gray-300 dark:border-white/20
+                  rounded-xl p-4
+                  flex flex-col items-center text-center gap-3
+                  bg-white/40 dark:bg-darkHover/30
+                  backdrop-blur-md
+                  hover:shadow-lg transition-all duration-300
+                "
               >
                 <Image
                   src={isDarkMode ? iconDark : icon}
                   alt={title}
-                  className="w-7 mt-3"
+                  width={28}
+                  height={28}
+                  className="w-7 h-7 object-contain"
                 />
-                <h3 className="my-4 font-semibold text-gray-700 dark:text-white">
+
+                <h3 className="font-semibold text-gray-800 dark:text-white">
                   {title}
                 </h3>
-                <p className="text-gray-600 text-sm dark:text-white/80">
+
+                <p className="text-sm text-gray-600 dark:text-white/70">
                   {description}
                 </p>
               </motion.li>
             ))}
           </motion.ul>
-          <motion.h4
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 1.3 }}
-            className="my-2 text-gray-700 font-Ovo dark:text-white/80"
-          >
+
+          {/* TOOLS TITLE */}
+          <h4 className="mt-10 mb-4 text-gray-700 dark:text-white/80 font-Ovo">
             Tools I use
-          </motion.h4>
-          <motion.ul
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 1.5 }}
-            className="flex items-center gap-3 sm:gap-7 flex-wrap"
-          >
+          </h4>
+
+          {/* TOOLS GRID */}
+          <ul className="flex flex-wrap items-center gap-4">
             {toolsData.map((tool, index) => (
-              <motion.li
-                whileHover={{ scale: 1.1 }}
+              <li
                 key={index}
-                className="flex items-center justify-center w-16 sm:w-20 cursor-pointer hover:scale-118 aspect-square border border-gray-400 rounded-lg transition-transform hover:-translate-y-1 duration-500"
+                className="
+                  w-16 sm:w-20 aspect-square
+                  flex items-center justify-center
+                  border border-gray-300 dark:border-white/20
+                  rounded-lg
+                  bg-white/40 dark:bg-darkHover/30
+                  hover:scale-105 transition-transform duration-300
+                "
               >
                 <Image
                   src={tool}
-                  alt="tool icon"
-                  width={58}
-                  height={58}
-                  className="mt-1 object-cover"
+                  alt="tool"
+                  width={60}
+                  height={60}
+                  className="w-10 h-10 object-contain"
                 />
-              </motion.li>
+              </li>
             ))}
-          </motion.ul>
+          </ul>
         </motion.div>
-      </motion.div>
-    </motion.div>
+      </div>
+    </motion.section>
   );
 };
 
